@@ -1,8 +1,9 @@
 let checkBoxes = document.querySelectorAll("input");
 let listLength = checkBoxes.length;
-for (let i = 0; i < listLength; i++) {
+let button1 = document.getElementById("button1");
+for (let i = 1; i < listLength; i++) {
   checkBoxes[i].addEventListener("click", function () {
-    document.querySelectorAll("span")[i].classList.toggle("done");
+    document.querySelectorAll("span")[i - 1].classList.toggle("done");
   });
 }
 
