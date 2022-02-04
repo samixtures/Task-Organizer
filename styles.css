@@ -12,3 +12,10 @@ body {
 .done {
   text-decoration: line-through;
 }
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  zoom: 60%;
+}
