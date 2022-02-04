@@ -1,3 +1,11 @@
+.color {
+  float: right;
+}
+.darkMode {
+  background-color: black;
+  color: white;
+}
+
 .done {
   text-decoration: line-through;
 }

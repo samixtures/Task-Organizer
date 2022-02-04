@@ -1,8 +1,11 @@
 let checkBoxes = document.querySelectorAll("input");
 let listLength = checkBoxes.length;
 let button = document.getElementById("button1");
+let button2 = document.getElementById("button2");
 let input = document.getElementById("userInput");
 let div = document.getElementById("divertido!");
+let body =  document.querySelector("body");
+let darkMode = document.getElementById("dark/light");
 
 function createTask(){
     let checker = document.createElement("input");
@@ -15,6 +18,7 @@ function createTask(){
     div.appendChild(br);
     input.value="";
   }
+
 
 function crossOutTasks(){
     for (let i = 1; i < listLength; i++) {
@@ -46,26 +50,22 @@ function addTask(){
       });
 }
 
+function darkModeFunc(){
+    darkMode.addEventListener("click", function() {
+       body.classList.toggle("darkMode");
+    })
+}
+
+
   crossOutTasks();
   addTask();
+  darkModeFunc();
 
 
 
 
 
 
-//WHAT I WAS TRYING TO MAKE THE NEW TASKS GET CROSS OUT 
-//   button1.addEventListener("click", function () {
-//     createTask();
-//     listLength++;
-//     let newCheckBoxes = document.querySelectorAll("input");
-//     let spanSelector = document.querySelectorAll("span");
-//     console.log("newChechBoxes", newCheckBoxes);
-//     console.log("spanSelector", spanSelector);
-//     newCheckBoxes[listLength].addEventListener("click", function () {
-//         spanSelector[listLength-1].classList.toggle("done");
-//     });
-//   });
 
 //ANOTHER, MAYBE BETTER, WAY OF DOING THE FOR LOOP FOR CORSSOUT THE TASKS
 // const checkBoxLabels = document.querySelectorAll("span");
