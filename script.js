@@ -26,6 +26,7 @@ function crossOutTasks(){
 
 function crossOutNewTasks(){
     button.addEventListener("click", function () {
+        if (input.value.length > 0)
         createTask();
         checkBoxes = document.querySelectorAll("input");
         listLength = checkBoxes.length;
