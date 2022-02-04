@@ -22,9 +22,15 @@ function createTask(){
 
 function crossOutTasks(){
     for (let i = 1; i < listLength; i++) {
+        let spanner = document.querySelectorAll("span");
         checkBoxes[i].addEventListener("click", function () {
-          document.querySelectorAll("span")[i - 1].classList.toggle("done");
+          spanner[i - 1].classList.toggle("done");
         });
+        checkBoxes[i-1].addEventListener("click", function () {
+          spanner[i - 2].classList.toggle("done");
+        });
+        console.log("listLength", listLength);
+        console.log("spanner", spanner);
       }
   }
 
@@ -32,9 +38,7 @@ function createTaskAndCross() {
     createTask();
     checkBoxes = document.querySelectorAll("input");
     listLength = checkBoxes.length;
-    checkBoxes[listLength-1].addEventListener("click", function () {
-        document.querySelectorAll("span")[listLength-2].classList.toggle("done");
-    })
+    crossOutTasks();
 }
 
 function addTask(){
