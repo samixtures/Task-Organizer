@@ -24,20 +24,30 @@ function crossOutTasks(){
       }
   }
 
-function crossOutNewTasks(){
-    button.addEventListener("click", function () {
-        if (input.value.length > 0)
-        createTask();
-        checkBoxes = document.querySelectorAll("input");
-        listLength = checkBoxes.length;
-        checkBoxes[listLength-1].addEventListener("click", function () {
-            document.querySelectorAll("span")[listLength-2].classList.toggle("done");
-        })
+function createTaskAndCross() {
+    createTask();
+    checkBoxes = document.querySelectorAll("input");
+    listLength = checkBoxes.length;
+    checkBoxes[listLength-1].addEventListener("click", function () {
+        document.querySelectorAll("span")[listLength-2].classList.toggle("done");
+    })
+}
+
+function addTask(){
+    button.addEventListener("click", function() {
+        if (input.value.length > 0) {
+            createTaskAndCross();
+        }
+      });
+    input.addEventListener("keypress", function(event) {
+        if (input.value.length > 0 && event.code === "Enter"){
+            createTaskAndCross();
+        }
       });
 }
 
   crossOutTasks();
-  crossOutNewTasks();
+  addTask();
 
 
 
