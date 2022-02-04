@@ -24,11 +24,19 @@ function crossOutTasks(){
       }
   }
 
-button.addEventListener("click", function () {
-    createTask();
-  });
+function crossOutNewTasks(){
+    button.addEventListener("click", function () {
+        createTask();
+        checkBoxes = document.querySelectorAll("input");
+        listLength = checkBoxes.length;
+        checkBoxes[listLength-1].addEventListener("click", function () {
+            document.querySelectorAll("span")[listLength-2].classList.toggle("done");
+        })
+      });
+}
 
   crossOutTasks();
+  crossOutNewTasks();
 
 
 
