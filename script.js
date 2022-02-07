@@ -11,6 +11,7 @@ function createTask(){
     let checker = document.createElement("input");
     checker.setAttribute("type", "checkbox")
     let span = document.createElement("span");
+    span.setAttribute("contentEditable", true)
     span.appendChild(document.createTextNode(input.value));
     let br = document.createElement("br");
     div.appendChild(checker);
