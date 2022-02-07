@@ -6,6 +6,7 @@ let input = document.getElementById("userInput");
 let div = document.getElementById("divertido!");
 let body =  document.querySelector("body");
 let darkMode = document.getElementById("dark/light");
+let allButtons = document.querySelectorAll("button");
 
 function createTask(){
     let checker = document.createElement("input");
@@ -20,6 +21,18 @@ function createTask(){
     input.value="";
   }
 
+  let newSpanner = document.querySelectorAll("span");
+  let newChecker = document.querySelectorAll("input");
+  let newBr = document.querySelectorAll("br");
+  for (let i = 2; i < listLength+1; i++) {
+    allButtons[i].addEventListener("click", function(){
+      newSpanner[i-2].remove();
+      newChecker[i-1].remove();
+      newBr[i-2].remove();
+      allButtons[i].remove();
+      console.log("X marks the spot!")
+    })
+  }
 
 function crossOutTasks(){
     for (let i = 1; i < listLength; i++) {
@@ -30,8 +43,8 @@ function crossOutTasks(){
         checkBoxes[i-1].addEventListener("click", function () {
           spanner[i - 2].classList.toggle("done");
         });
-        console.log("listLength", listLength);
-        console.log("spanner", spanner);
+        // console.log("listLength", listLength);
+        // console.log("spanner", spanner);
       }
   }
 
