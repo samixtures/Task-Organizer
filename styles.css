@@ -19,3 +19,8 @@ body {
   right: 0;
   zoom: 60%;
 }
+.buttonXStyle {
+  background-color: transparent;
+  /* border: none; */
+  border-radius: 7px;
+}

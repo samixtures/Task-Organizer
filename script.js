@@ -13,10 +13,11 @@ function createTask(){
     checker.setAttribute("type", "checkbox")
     let span = document.createElement("span");
     span.setAttribute("contentEditable", true)
-    span.appendChild(document.createTextNode(input.value));
+    span.appendChild(document.createTextNode(input.value + " "));
     let br = document.createElement("br");
     let buttonX = document.createElement("button");
     buttonX.appendChild(document.createTextNode("❌"));
+    buttonX.classList.add("buttonXStyle")
     div.appendChild(checker);
     div.appendChild(span);
     div.appendChild(buttonX);
@@ -27,6 +28,7 @@ function createTask(){
   let newSpanner = document.querySelectorAll("span");
   let newChecker = document.querySelectorAll("input");
   let newBr = document.querySelectorAll("br");
+
 function deleteTasks(){
   for (let i = 2; i < listLength+1; i++) {
     allButtons[i].addEventListener("click", function(){
@@ -38,6 +40,7 @@ function deleteTasks(){
     })
   }
 }
+deleteTasks();//This is for the tasks that I hard coded
 
 function crossOutTasks(){
     for (let i = 2; i < listLength; i++) {
@@ -55,6 +58,7 @@ function crossOutTasks(){
         // console.log("spanner", spanner);
       }
   }
+  //crossOutTasks();//This is for the tasks that I hard coded
 
 function createTaskAndCross() {
     createTask();
