@@ -46,7 +46,7 @@ function crossOutTasks(){
     for (let i = 2; i < listLength; i++) {
         let spanner = document.querySelectorAll("span");
         checkBoxes[i].addEventListener("click", function () {
-          //console.log(checkBoxes[i])
+          console.log(checkBoxes[i])
           //^This console.log reveals a great deal: If we add 4 tasks and check mark them all, the first will console log 4 times, 2nd 3 times, 3rd 2 times, and last 1.
           spanner[i - 1].classList.toggle("done");
         });
@@ -58,7 +58,14 @@ function crossOutTasks(){
         // console.log("spanner", spanner);
       }
   }
-  //crossOutTasks();//This is for the tasks that I hard coded
+  // crossOutTasks();//This is for the tasks that I hard coded
+  let tempCheckBoxes = document.querySelectorAll("input");
+  let tempSpanner = document.querySelectorAll("span");
+  for (let i = 1; i < listLength; i++){
+      tempCheckBoxes[i].addEventListener("click", function() {
+      tempSpanner[i-1].classList.toggle("done");
+      })
+  }
 
 function createTaskAndCross() {
     createTask();
