@@ -1,5 +1,6 @@
 body {
   zoom: 300%;
+  font-family: "Roboto", sans-serif;
 }
 
 .color {
@@ -7,8 +8,8 @@ body {
 }
 
 .darkMode {
-  background-color: black;
-  color: white;
+  background-color: #051615;
+  color: #ee8104;
 }
 
 .done {
