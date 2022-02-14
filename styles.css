@@ -1,6 +1,10 @@
 body {
   zoom: 300%;
-  font-family: "Roboto", sans-serif;
+  font-family: "Open Sans", sans-serif;
+}
+
+body h1 {
+  font-family: "Gideon Roman", cursive;
 }
 
 .color {
