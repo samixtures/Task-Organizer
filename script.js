@@ -14,6 +14,7 @@ function createTask(){
     let span = document.createElement("span");
     span.setAttribute("contentEditable", true)
     span.appendChild(document.createTextNode(input.value + " "));
+    span.classList.add("page");
     let br = document.createElement("br");
     let buttonX = document.createElement("button");
     buttonX.appendChild(document.createTextNode("❌"));
