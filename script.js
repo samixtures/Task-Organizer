@@ -87,26 +87,12 @@ function createTaskAndCross() {
 }
 let counter = 0;
 function addTask(){
-    button.addEventListener("click", function() {
         if (input.value.length > 0) {
-            createTaskAndCross();
-            crossOutTasks();
-             deleteTasks();
+          createTaskAndCross();
+          crossOutTasks();
+          deleteTasks();
+          counter++;
         }
-      });
-    input.addEventListener("keypress", function(event) {
-        if (input.value.length > 0 && event.code === "Enter"){
-            createTaskAndCross();
-            // tempCheckBoxes[listLength-1].addEventListener("click", function() {
-            //   console.log(listLength-1 + "has been checked");
-            //   tempSpanner[listLength-2].classList.toggle("done");
-            // })
-            crossOutTasks();
-            deleteTasks();
-            counter++;
-            console.log("counter is " + counter);
-        }
-      });
 }
 
 function darkModeFunc(){
@@ -125,8 +111,17 @@ function darkModeFunc(){
 //Everytime we press the x, delete an item from local storage map (.removeItem)
 
   localStorage.clear();
+  // if (input.value!="") addTask();
+  button.addEventListener("click", function() {
+    addTask();
+  });
+  input.addEventListener("keypress", function(event) {
+    if (input.value.length > 0 && event.code === "Enter") addTask();
+  });
 
-  addTask();
+  
+
+
   darkModeFunc();
   // deleteTasks();
 
