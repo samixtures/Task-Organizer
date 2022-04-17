@@ -7,13 +7,19 @@ let div = document.getElementById("divertido!");
 let body =  document.querySelector("body");
 let darkMode = document.getElementById("dark/light");
 let allButtons = document.querySelectorAll("button");
+let newCounter = 0;
 
-function createTask(){
+function createTask(inp){
     let checker = document.createElement("input");
     checker.setAttribute("type", "checkbox")
     let span = document.createElement("span");
     span.setAttribute("contentEditable", true)
-    span.appendChild(document.createTextNode(input.value + " "));
+    span.appendChild(document.createTextNode(inp + " "));
+    //LOCAL STORAGE
+    localStorage.setItem(String(newCounter), inp);
+    console.log(localStorage.getItem(String(newCounter)));
+    newCounter++;
+    //LOCAL STORAGE
     span.classList.add("page");
     let br = document.createElement("br");
     let buttonX = document.createElement("button");
@@ -44,20 +50,6 @@ function deleteTasks(){
 deleteTasks();//This is for the tasks that I hard coded
 
 function crossOutTasks(){
-    // for (let i = 2; i < listLength; i++) {
-    //     let spanner = document.querySelectorAll("span");
-    //     checkBoxes[i].addEventListener("click", function () {
-    //       console.log(checkBoxes[i])
-    //       //^This console.log reveals a great deal: If we add 4 tasks and check mark them all, the first will console log 4 times, 2nd 3 times, 3rd 2 times, and last 1.
-    //       spanner[i - 1].classList.toggle("done");
-    //     });
-    //     checkBoxes[i-1].addEventListener("click", function () {
-    //       let spanner = document.querySelectorAll("span");
-    //       spanner[i - 2].classList.toggle("done");
-    //     });
-    //     // console.log("listLength", listLength);
-    //     // console.log("spanner", spanner);
-    //   }
     for (let i = 1; i < listLength; i++){
       tempCheckBoxes[i].addEventListener("click", function() {
         //console.log(i + "has been checked");
@@ -83,7 +75,7 @@ function crossOutTasks(){
   }
 
 function createTaskAndCross() {
-    createTask();
+    createTask(input.value);
     checkBoxes = document.querySelectorAll("input");
     allButtons = document.querySelectorAll("button");
     newSpanner = document.querySelectorAll("span");
@@ -123,6 +115,16 @@ function darkModeFunc(){
     })
 }
 
+
+//LOCAL STORAGE
+
+//Store the input value
+//if the local storage map is not empty, do the functions that add tasks/check/Xs
+//with local storage being somehow put into the task name
+
+//Everytime we press the x, delete an item from local storage map (.removeItem)
+
+  localStorage.clear();
 
   addTask();
   darkModeFunc();
