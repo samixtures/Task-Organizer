@@ -1,6 +1,7 @@
 body {
   zoom: 300%;
   font-family: "Open Sans", sans-serif;
+  font-size: 1.5em;
 }
 
 body h1 {
@@ -12,10 +13,10 @@ textarea {
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 2%;
+  height: 50px;
   border: 0px;
   font-weight: bold;
-  font-size: 32px;
+  font-size: 40px;
 }
 
 .color {
@@ -31,6 +32,19 @@ textarea {
   text-decoration: line-through;
 }
 
+#notes {
+  display: flex;
+  margin: auto;
+  transform:scale(0);
+  transition: 1s ease-in-out;
+  background-color: white;
+  width: 40vh;
+  text-align: center;
+}
+
+#notes.active {
+  transform:scale(1);
+}
 .footer {
   position: fixed;
   bottom: 0;

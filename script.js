@@ -1,3 +1,6 @@
+//INITIALIZATION OF IMPORTANT VARIABLES (I THINK MOST ARE IMPORTANT 🤷‍♂️)
+
+
 let checkBoxes = document.querySelectorAll("input");
 let listLength = checkBoxes.length;
 let button = document.getElementById("button1");
@@ -9,6 +12,23 @@ let darkMode = document.getElementById("dark/light");
 let allButtons = document.querySelectorAll("button");
 let value, key;
 let title = document.getElementById("txt");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//FUNCTION FOR CREATING TASKS, CHECKBOX, AND X BOX
+
+
 
 function createTask(inp){
     let checker = document.createElement("input");
@@ -33,9 +53,32 @@ function createTask(inp){
     input.value="";
   }
 
+
+
+  //DUNO WHAT THIS IS
   let newSpanner = document.querySelectorAll("span");
   let newChecker = document.querySelectorAll("input");
   let newBr = document.querySelectorAll("br");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//FUNCTION FOR USING THE X BUTTON TO DELETE TASKS. START AT 3 CUZ WE HAVE DARK MODE, ENTER, AND RESET
+
+
+
 
 function deleteTasks(){
   for (let i = 3; i < listLength+2; i++) {
@@ -49,7 +92,21 @@ function deleteTasks(){
     })
   }
 }
-// deleteTasks();//This is for the tasks that I hard coded
+
+
+
+
+
+
+
+
+
+
+
+
+
+//THIS IS FOR CROSSING TASKS OUT. IT'S COMPLICATED... PROLY NEED TO CONSOLE LOG TO FIGURE THINGS OUT
+
 
 function crossOutTasks(){
     for (let i = 1; i < listLength; i++){
@@ -67,6 +124,23 @@ function crossOutTasks(){
       }
     }
   }
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  //THIS IS FOR HARD CODED TASKS I BELIEVE: DON'T THINK IT'S NECESSARY ANYMORE
+
+
+
   let tempCheckBoxes = document.querySelectorAll("input");
   let tempSpanner = document.querySelectorAll("span");
   for (let i = 1; i < listLength; i++){
@@ -75,6 +149,18 @@ function crossOutTasks(){
       tempSpanner[i-1].classList.toggle("done");
       })
   }
+
+
+
+
+
+
+
+
+
+
+//HONESTLY DON'T KNOW WHAT THIS IS ABOUT
+
 
 function createTaskAndCross() {
     createTask(input.value);
@@ -87,91 +173,55 @@ function createTaskAndCross() {
     tempSpanner = document.querySelectorAll("span");
     listLength = checkBoxes.length;
 }
-let counter = 0;
-let map = new Map();
-let inpArray = [];
+
+
+
+
+
+
+
+
+
+//FUNCTION FOR PUTTING OTHER FUNCTIONS IN
+
+
+// let map = new Map();
+// let inpArray = [];
 function addTask(){
         if (input.value.length > 0) {
 
-          inpArray.push(input.value);
-          map.set(input.value, counter);
-          // console.log(map.get(input.value));
+        //FOR DELETING EACH ITEM FROM LOCAL STORAGE (WORKING ON IT)
 
 
-          // console.log(localStorage.key(map.get(input.value)))
-          //This is the key that we can use to remove local storage ^
+          // inpArray.push(input.value);
+          // map.set(input.value, counter);
+
+        //OTHER IMPORTANT FUNCTIONS ALL IN 1
+
 
           createTaskAndCross();
           crossOutTasks();
           deleteTasks();
-          counter++;
         }
 }
 
-function darkModeFunc(){
-  body.classList.toggle("darkMode");
-  title.classList.toggle('darkMode');
-}
-
-
-
-//LOCAL STORAGE
-
-//Store the input value
-//if the local storage map is not empty, do the functions that add tasks/check/Xs
-//with local storage being somehow put into the task name
-
-//Everytime we press the x, delete an item from local storage map (.removeItem)
-
-  // localStorage.clear();
-
-  // if (input.value!="") addTask();
-
-
-
-//   // console.log("all button Xs " + allButtonX.length);
-//   // allButtonX[1].style.backgroundColor="red";
-
-
-  
-//   //TO DELETE SPECIFIC LOCAL STORAGE
-
-// let allButtonX = document.getElementsByClassName("buttonXStyle")
-//   for(let i = allButtonX.length-1; i >= 0; i--){
-//     allButtonX[i].addEventListener('click', function() {
-//       // console.log(map.get(inpArray[i])); //prints numbers from 0 to how ever many in array
-//       console.log(localStorage.key(map.get(inpArray[i]))); //prints local storage keys
-
-//       localStorage.removeItem(localStorage.key(map.get(inpArray[i])));
-
-//       map.delete(inpArray[i]);
-//       // console.log([...map.entries()]); //shows all map values. The value is indeed deleted
-//       inpArray.splice(i, 1); //deletes 1 of whatever index i is
-
-//     })
-//   }
 
 
 
 
-//IMPLEMENTING LOCAL STORAGE FOR DARK MODE BUTTON AND TITLE CHANGE
-
-//  Title: if title ! = "task manager" localStorage.set(title, title.value)
-
-// sessionStorage.setItem('title', "Task Manager!");
-if(!sessionStorage.getItem('title')) sessionStorage.setItem('title', 'Task Manager! 🙂');
-title.value = sessionStorage.getItem('title');
-console.log(title.textContent);
-function myFunction(val) {
-sessionStorage.setItem('title', val);
-title.innerHTML = sessionStorage.getItem('title');
-}
 
 
   
 
 
-  //use .onChange with local storage to make darkMode/lightMode stay after reload
+//DARK MODE
+
+  function darkModeFunc(){
+    body.classList.toggle("darkMode");
+    title.classList.toggle('darkMode');
+  }
+
+
   darkMode.addEventListener("click", function() {
     darkModeFunc();
     if(!sessionStorage.getItem('bgcol')) sessionStorage.setItem('bgcol', 'yes');
@@ -182,6 +232,23 @@ title.innerHTML = sessionStorage.getItem('title');
     darkModeFunc();
   }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+//ACTUAL ADD TASK FUNCTION USAGE WITH CLICK AND "ENTER"
+
+
+
   button.addEventListener("click", function() {
     addTask();
   });
@@ -189,6 +256,22 @@ title.innerHTML = sessionStorage.getItem('title');
   input.addEventListener("keypress", function(event) {
     if (input.value.length > 0 && event.code === "Enter") addTask();
   });
+
+
+
+
+
+
+
+
+
+
+
+
+//RETAIN TASKS AFTER REFRESH/XING OUT TAB USING LOCAL STORAGE
+
+
+
 
   let i = localStorage.length-1;
   while(i >= 0){
@@ -198,6 +281,29 @@ title.innerHTML = sessionStorage.getItem('title');
     addTask();
     i--;
   }
+
+
+
+
+
+
+
+//RETAIN TITLE WITH SESSION STORAGE
+
+
+
+
+  if(!sessionStorage.getItem('title')) sessionStorage.setItem('title', 'Task Manager! 🙂');
+  title.value = sessionStorage.getItem('title');
+  console.log(title.textContent);
+  function myFunction(val) {
+  sessionStorage.setItem('title', val);
+  title.innerHTML = sessionStorage.getItem('title');
+  }
+
+
+
+
 
 
 //RESET
@@ -219,3 +325,32 @@ title.innerHTML = sessionStorage.getItem('title');
     title.value = 'Task Manager 🙂!';
     // allButtons[3].remove();
   })
+
+
+
+
+
+
+
+
+
+  //TO DELETE SPECIFIC LOCAL STORAGE (MIGHT WORK ON AGAIN IN THE FUTURE)
+    //PROBLEM: LOCAL STORAGE RANDOMIZES AFTER BEING INPUTTED AND THAT MESSES UP WHICH TASK GETS
+    //DELETED IN LOCAL STORAGE WHEN THE X MARK IS CLICKED
+
+
+
+// let allButtonX = document.getElementsByClassName("buttonXStyle")
+//   for(let i = allButtonX.length-1; i >= 0; i--){
+//     allButtonX[i].addEventListener('click', function() {
+//       // console.log(map.get(inpArray[i])); //prints numbers from 0 to how ever many in array
+//       console.log(localStorage.key(map.get(inpArray[i]))); //prints local storage keys
+
+//       localStorage.removeItem(localStorage.key(map.get(inpArray[i])));
+
+//       map.delete(inpArray[i]);
+//       // console.log([...map.entries()]); //shows all map values. The value is indeed deleted
+//       inpArray.splice(i, 1); //deletes 1 of whatever index i is
+
+//     })
+//   }
