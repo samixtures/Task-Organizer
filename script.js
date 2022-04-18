@@ -7,7 +7,7 @@ let div = document.getElementById("divertido!");
 let body =  document.querySelector("body");
 let darkMode = document.getElementById("dark/light");
 let allButtons = document.querySelectorAll("button");
-let newCounter = 0;
+let value, key;
 
 function createTask(inp){
     let checker = document.createElement("input");
@@ -16,9 +16,9 @@ function createTask(inp){
     span.setAttribute("contentEditable", true)
     span.appendChild(document.createTextNode(inp + " "));
     //LOCAL STORAGE
-    localStorage.setItem(String(newCounter), inp);
-    console.log(localStorage.getItem(String(newCounter)));
-    newCounter++;
+    key = input.value.length/input.value.charCodeAt(0);
+    value = input.value;
+    localStorage.setItem(key, value);
     //LOCAL STORAGE
     span.classList.add("page");
     let br = document.createElement("br");
@@ -37,17 +37,18 @@ function createTask(inp){
   let newBr = document.querySelectorAll("br");
 
 function deleteTasks(){
-  for (let i = 2; i < listLength+1; i++) {
+  for (let i = 3; i < listLength+2; i++) {
     allButtons[i].addEventListener("click", function(){
-      newSpanner[i-2].remove();
-      newChecker[i-1].remove();
-      newBr[i-2].remove();
+      newSpanner[i-3].remove();
+      newChecker[i-2].remove();
+      newBr[i-3].remove();
+      console.log(i);
       allButtons[i].remove();
       console.log("X marks the spot!")
     })
   }
 }
-deleteTasks();//This is for the tasks that I hard coded
+// deleteTasks();//This is for the tasks that I hard coded
 
 function crossOutTasks(){
     for (let i = 1; i < listLength; i++){
@@ -86,8 +87,19 @@ function createTaskAndCross() {
     listLength = checkBoxes.length;
 }
 let counter = 0;
+let map = new Map();
+let inpArray = [];
 function addTask(){
         if (input.value.length > 0) {
+
+          inpArray.push(input.value);
+          map.set(input.value, counter);
+          // console.log(map.get(input.value));
+
+
+          // console.log(localStorage.key(map.get(input.value)))
+          //This is the key that we can use to remove local storage ^
+
           createTaskAndCross();
           crossOutTasks();
           deleteTasks();
@@ -110,7 +122,8 @@ function darkModeFunc(){
 
 //Everytime we press the x, delete an item from local storage map (.removeItem)
 
-  localStorage.clear();
+  // localStorage.clear();
+
   // if (input.value!="") addTask();
   button.addEventListener("click", function() {
     addTask();
@@ -119,9 +132,53 @@ function darkModeFunc(){
     if (input.value.length > 0 && event.code === "Enter") addTask();
   });
 
+  let i = localStorage.length-1;
+  let allButtonX = document.getElementsByClassName("buttonXStyle")
+  while(i >= 0){
+    // console.log("i is " + i)
+    // console.log(localStorage.getItem(localStorage.key(i)));
+    input.value = localStorage.getItem(localStorage.key(i));
+    addTask();
+    i--;
+  }
+
+//   // console.log("all button Xs " + allButtonX.length);
+//   // allButtonX[1].style.backgroundColor="red";
+
+
+  
+//   //TO DELETE SPECIFIC LOCAL STORAGE
+
+
+//   for(let i = allButtonX.length-1; i >= 0; i--){
+//     allButtonX[i].addEventListener('click', function() {
+//       // console.log(map.get(inpArray[i])); //prints numbers from 0 to how ever many in array
+//       console.log(localStorage.key(map.get(inpArray[i]))); //prints local storage keys
+
+//       localStorage.removeItem(localStorage.key(map.get(inpArray[i])));
+
+//       map.delete(inpArray[i]);
+//       // console.log([...map.entries()]); //shows all map values. The value is indeed deleted
+//       inpArray.splice(i, 1); //deletes 1 of whatever index i is
+
+//     })
+//   }
+
+let resetButton = document.getElementById('reset');
+
+resetButton.addEventListener("click", function(){
+  for (let i = 2; i < listLength+1; i++) {
+      newSpanner[i-2].remove();
+      newChecker[i-1].remove();
+      newBr[i-2].remove();
+      allButtons[i+1].remove();
+  }
+  // allButtons[3].remove();
+})
   
 
 
+  //use .onChange with local storage to make darkMode/lightMode stay after reload
   darkModeFunc();
   // deleteTasks();
 
