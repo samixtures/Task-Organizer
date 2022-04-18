@@ -81,11 +81,11 @@ function createTask(inp){
 
 
 function deleteTasks(){
-  for (let i = 3; i < listLength+2; i++) {
+  for (let i = 4; i < listLength+3; i++) {
     allButtons[i].addEventListener("click", function(){
-      newSpanner[i-3].remove();
-      newChecker[i-2].remove();
-      newBr[i-3].remove();
+      newSpanner[i-4].remove();
+      newChecker[i-3].remove();
+      newBr[i-4].remove();
       console.log(i);
       allButtons[i].remove();
       console.log("X marks the spot!")
@@ -288,6 +288,33 @@ function addTask(){
 
 
 
+
+
+
+//BRINGING UP/CLOSING NOTES FOR USER TO READ
+
+  const notesBtn = document.getElementById("notesBtn");
+  const notes = document.getElementById("notes");
+
+  notesBtn.addEventListener("click", function() {
+    notes.classList.toggle('active');
+  })
+
+  function openNotes(n) {
+    n.classList.toggle('active');
+  }
+
+  function closeNotes(n) {
+
+  }
+
+
+
+
+
+
+
+
 //RETAIN TITLE WITH SESSION STORAGE
 
 
@@ -313,11 +340,13 @@ function addTask(){
   let resetButton = document.getElementById('reset');
 
   resetButton.addEventListener("click", function(){
-    for (let i = 2; i < listLength+1; i++) {
-        newSpanner[i-2].remove();
-        newChecker[i-1].remove();
-        newBr[i-2].remove();
-        allButtons[i+1].remove();
+    for (let i = 4; i < listLength+3; i++) {
+      newSpanner[i-4].remove();
+      newChecker[i-3].remove();
+      newBr[i-4].remove();
+      console.log(i);
+      allButtons[i].remove();
+      console.log("X marks the spot!")
     }
   
     localStorage.clear();
