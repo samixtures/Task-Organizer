@@ -160,7 +160,7 @@ function darkModeFunc(){
 // sessionStorage.setItem('title', "Task Manager!");
 let title = document.getElementById("txt");
 if(!sessionStorage.getItem('title')) sessionStorage.setItem('title', 'Task Manager! 🙂');
-title.innerHTML = sessionStorage.getItem('title');
+title.value = sessionStorage.getItem('title');
 console.log(title.textContent);
 function myFunction(val) {
 sessionStorage.setItem('title', val);
@@ -208,6 +208,6 @@ title.innerHTML = sessionStorage.getItem('title');
   
     localStorage.clear();
     sessionStorage.setItem('title', 'Task Manager 🙂!');
-    title.innerHTML = sessionStorage.getItem('title');
+    title.value = 'Task Manager 🙂!';
     // allButtons[3].remove();
   })
