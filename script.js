@@ -133,7 +133,6 @@ function darkModeFunc(){
   });
 
   let i = localStorage.length-1;
-  let allButtonX = document.getElementsByClassName("buttonXStyle")
   while(i >= 0){
     // console.log("i is " + i)
     // console.log(localStorage.getItem(localStorage.key(i)));
@@ -149,7 +148,7 @@ function darkModeFunc(){
   
 //   //TO DELETE SPECIFIC LOCAL STORAGE
 
-
+// let allButtonX = document.getElementsByClassName("buttonXStyle")
 //   for(let i = allButtonX.length-1; i >= 0; i--){
 //     allButtonX[i].addEventListener('click', function() {
 //       // console.log(map.get(inpArray[i])); //prints numbers from 0 to how ever many in array
@@ -173,6 +172,8 @@ resetButton.addEventListener("click", function(){
       newBr[i-2].remove();
       allButtons[i+1].remove();
   }
+
+  localStorage.clear();
   // allButtons[3].remove();
 })
   
