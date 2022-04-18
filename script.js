@@ -8,6 +8,7 @@ let body =  document.querySelector("body");
 let darkMode = document.getElementById("dark/light");
 let allButtons = document.querySelectorAll("button");
 let value, key;
+let title = document.getElementById("txt");
 
 function createTask(inp){
     let checker = document.createElement("input");
@@ -108,10 +109,10 @@ function addTask(){
 }
 
 function darkModeFunc(){
-    darkMode.addEventListener("click", function() {
-       body.classList.toggle("darkMode");
-    })
+  body.classList.toggle("darkMode");
+  title.classList.toggle('darkMode');
 }
+
 
 
 //LOCAL STORAGE
@@ -158,7 +159,6 @@ function darkModeFunc(){
 //  Title: if title ! = "task manager" localStorage.set(title, title.value)
 
 // sessionStorage.setItem('title', "Task Manager!");
-let title = document.getElementById("txt");
 if(!sessionStorage.getItem('title')) sessionStorage.setItem('title', 'Task Manager! 🙂');
 title.value = sessionStorage.getItem('title');
 console.log(title.textContent);
@@ -172,7 +172,15 @@ title.innerHTML = sessionStorage.getItem('title');
 
 
   //use .onChange with local storage to make darkMode/lightMode stay after reload
-  darkModeFunc();
+  darkMode.addEventListener("click", function() {
+    darkModeFunc();
+    if(!sessionStorage.getItem('bgcol')) sessionStorage.setItem('bgcol', 'yes');
+    else sessionStorage.removeItem('bgcol');
+  })
+
+  if(!sessionStorage.getItem('bgcol')) {
+    darkModeFunc();
+  }
 
   button.addEventListener("click", function() {
     addTask();
