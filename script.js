@@ -125,21 +125,8 @@ function darkModeFunc(){
   // localStorage.clear();
 
   // if (input.value!="") addTask();
-  button.addEventListener("click", function() {
-    addTask();
-  });
-  input.addEventListener("keypress", function(event) {
-    if (input.value.length > 0 && event.code === "Enter") addTask();
-  });
 
-  let i = localStorage.length-1;
-  while(i >= 0){
-    // console.log("i is " + i)
-    // console.log(localStorage.getItem(localStorage.key(i)));
-    input.value = localStorage.getItem(localStorage.key(i));
-    addTask();
-    i--;
-  }
+
 
 //   // console.log("all button Xs " + allButtonX.length);
 //   // allButtonX[1].style.backgroundColor="red";
@@ -163,38 +150,64 @@ function darkModeFunc(){
 //     })
 //   }
 
-let resetButton = document.getElementById('reset');
 
-resetButton.addEventListener("click", function(){
-  for (let i = 2; i < listLength+1; i++) {
-      newSpanner[i-2].remove();
-      newChecker[i-1].remove();
-      newBr[i-2].remove();
-      allButtons[i+1].remove();
-  }
 
-  localStorage.clear();
-  // allButtons[3].remove();
-})
+
+//IMPLEMENTING LOCAL STORAGE FOR DARK MODE BUTTON AND TITLE CHANGE
+
+//  Title: if title ! = "task manager" localStorage.set(title, title.value)
+
+// sessionStorage.setItem('title', "Task Manager!");
+let title = document.getElementById("txt");
+if(!sessionStorage.getItem('title')) sessionStorage.setItem('title', 'Task Manager! 🙂');
+title.innerHTML = sessionStorage.getItem('title');
+console.log(title.textContent);
+function myFunction(val) {
+sessionStorage.setItem('title', val);
+title.innerHTML = sessionStorage.getItem('title');
+}
+
+
   
 
 
   //use .onChange with local storage to make darkMode/lightMode stay after reload
   darkModeFunc();
-  // deleteTasks();
+
+  button.addEventListener("click", function() {
+    addTask();
+  });
+
+  input.addEventListener("keypress", function(event) {
+    if (input.value.length > 0 && event.code === "Enter") addTask();
+  });
+
+  let i = localStorage.length-1;
+  while(i >= 0){
+    // console.log("i is " + i)
+    // console.log(localStorage.getItem(localStorage.key(i)));
+    input.value = localStorage.getItem(localStorage.key(i));
+    addTask();
+    i--;
+  }
+
+
+//RESET
 
 
 
+  let resetButton = document.getElementById('reset');
 
-
-
-
-//ANOTHER, MAYBE BETTER, WAY OF DOING THE FOR LOOP FOR CORSSOUT THE TASKS
-// const checkBoxLabels = document.querySelectorAll("span");
-// for (let i = 0; i < checkBoxes.length; i++) {
-//   const checkBox = checkBoxes[i];
-//   const label = checkBoxLabels[i];
-//   checkBox.addEventListener("click", () => {
-//     label.classList.toggle("done");
-//   });
-// }
+  resetButton.addEventListener("click", function(){
+    for (let i = 2; i < listLength+1; i++) {
+        newSpanner[i-2].remove();
+        newChecker[i-1].remove();
+        newBr[i-2].remove();
+        allButtons[i+1].remove();
+    }
+  
+    localStorage.clear();
+    sessionStorage.setItem('title', 'Task Manager 🙂!');
+    title.innerHTML = sessionStorage.getItem('title');
+    // allButtons[3].remove();
+  })
