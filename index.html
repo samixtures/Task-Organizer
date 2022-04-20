@@ -18,32 +18,37 @@
             <li class="navBtn"> <button id="dark/light">☀/🌙</button></li>
         </ul>
     </nav>
-    <textarea id = "txt" rows = "1"onchange="myFunction(this.value)">
-        Task Manager 🙂!
-    </textarea>
-    <input id="userInput" type="text" placeholder="NEW TASK 🧐"> <button id="button1">Enter</button>
-    <!-- <button id="button2">Remove</button> <br> -->
-    <div id="divertido!">
-        <!-- <input type="checkbox"> <span contentEditable="true" class = "page">Example Task 1 🎨</span> <button class = "buttonXStyle">❌</button><br>
-        <input type="checkbox"> <span contentEditable="true" class = "page">Example Task 2 🐵</span> <button class = "buttonXStyle">❌</button><br>
-        <input type="checkbox"> <span contentEditable="true" class = "page">Example Task 3 🚗</span> <button class = "buttonXStyle">❌</button><br> -->
-        <!-- <footer class = "footer">Click on any text to edit<p>Tasks remain after reload, "RESET" resets everything</p></footer> -->
-        <footer class="footer">Title is editable!</footer>
-        <!-- <img src="sensei-wu-quote!.png" alt=""> -->
+    <div class="aboutDiv"> 
+        <button class="aboutBtn" onclick="document.getElementById('notes').classList.toggle('active')">About</button> 
+        <div id="notes" style="display:none">
+            Notes!
+            <ul class="notesUl">
+                <li class="notesLi">Title and dark/light mode are saved upon refresh.</li>
+                <br>
+                <li class="notesLi">Edit title by changing it, then clicking off of it.</li>
+                <br>
+                <li class="notesLi">Tasks are saved upon refresh AND Xing out the page! Only way to delete them permanently is through the reset button.</li>
+                <br>
+                <li class="notesLi">Tasks become randomized after refresh: it's complicated why that is but that's how it is for now 😢.</li>
+                <br>
+                <li class="notesLi">Message me if you have suggestions or problems @ bajwasami309@gmail.com, thanks for checking out the site!</li>
+            </ul>
+        </div>
     </div>
-    <div id="notes">
-        Notes!
-        <ul class="notesUl">
-            <li class="notesLi">Title and dark/light mode are saved upon refresh.</li>
-            <br>
-            <li class="notesLi">Edit title by changing it, then clicking off of it.</li>
-            <br>
-            <li class="notesLi">Tasks are saved upon refresh AND Xing out the page! Only way to delete them permanently is through the reset button.</li>
-            <br>
-            <li class="notesLi">Tasks become randomized after refresh: it's complicated why that is but that's how it is for now 😢.</li>
-            <br>
-            <li class="notesLi">Message me if you have suggestions or problems @ bajwasami309@gmail.com, thanks for checking out the site!</li>
-        </ul>
+    <div class="cover">
+        <textarea id = "txt" rows = "1"onchange="myFunction(this.value)">
+            Task Manager 🙂!
+        </textarea>
+        <div class="inpTask"><input id="userInput" type="text" placeholder="NEW TASK 🧐"> <button id="button1">Enter</button></div>
+        <!-- <button id="button2">Remove</button> <br> -->
+        <div id="divertido!">
+            <!-- <input type="checkbox"> <span contentEditable="true" class = "page">Example Task 1 🎨</span> <button class = "buttonXStyle">❌</button><br>
+            <input type="checkbox"> <span contentEditable="true" class = "page">Example Task 2 🐵</span> <button class = "buttonXStyle">❌</button><br>
+            <input type="checkbox"> <span contentEditable="true" class = "page">Example Task 3 🚗</span> <button class = "buttonXStyle">❌</button><br> -->
+            <!-- <footer class = "footer">Click on any text to edit<p>Tasks remain after reload, "RESET" resets everything</p></footer> -->
+            <footer class="footer">Title is editable!</footer>
+            <!-- <img src="sensei-wu-quote!.png" alt=""> -->
+        </div>
     </div>
     <script src="script.js"></script>
 </body>

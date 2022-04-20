@@ -293,20 +293,20 @@ function addTask(){
 
 //BRINGING UP/CLOSING NOTES FOR USER TO READ
 
-  const notesBtn = document.getElementById("notesBtn");
-  const notes = document.getElementById("notes");
+  // const notesBtn = document.getElementById("notesBtn");
+  // const notes = document.getElementById("notes");
 
-  notesBtn.addEventListener("click", function() {
-    notes.classList.toggle('active');
-  })
+  // notesBtn.addEventListener("click", function() {
+  //   notes.classList.toggle('active');
+  // })
 
-  function openNotes(n) {
-    n.classList.toggle('active');
-  }
+  // function openNotes(n) {
+  //   n.classList.toggle('active');
+  // }
 
-  function closeNotes(n) {
+  // function closeNotes(n) {
 
-  }
+  // }
 
 
 
