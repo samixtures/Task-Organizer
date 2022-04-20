@@ -3,6 +3,24 @@ body {
   font-family: "Open Sans", sans-serif;
   font-size: 1.5em;
   background-color: green;
+  margin: 0;
+}
+
+.nav {
+  display: flex;
+  font-size: 0.7em;
+  list-style-type: none;
+  justify-content: flex-end;
+  margin: 0;
+}
+
+.navBtn {
+  padding: 10px;
+}
+
+.darkMode {
+  background-color: #051615;
+  color: #ee8104;
 }
 
 body h1 {
@@ -19,15 +37,6 @@ textarea {
   border: 0px;
   font-weight: bold;
   font-size: 40px;
-}
-
-.color {
-  float: right;
-}
-
-.darkMode {
-  background-color: #051615;
-  color: #ee8104;
 }
 
 .done {
