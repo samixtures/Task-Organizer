@@ -11,9 +11,13 @@
 </head>
 
 <body>
-    <header><button id="dark/light" class="color">☀/🌙</button></header>
-    <header><button id="reset" class="color">RESET</button></header>
-    <header><button id="notesBtn" class="color">NOTES</button></header>
+    <nav>
+        <ul class="nav">
+            <li class="navBtn"> <button id="reset">RESET</button></li>
+            <li class="navBtn"> <button id="notesBtn">NOTES</button></li>
+            <li class="navBtn"> <button id="dark/light">☀/🌙</button></li>
+        </ul>
+    </nav>
     <textarea id = "txt" rows = "1"onchange="myFunction(this.value)">
         Task Manager 🙂!
     </textarea>
