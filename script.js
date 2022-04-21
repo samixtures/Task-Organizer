@@ -12,6 +12,7 @@ let darkMode = document.getElementById("dark/light");
 let allButtons = document.querySelectorAll("button");
 let value, key;
 let title = document.getElementById("txt");
+let aboutBtn = document.getElementById("darkBtn");
 
 
 
@@ -219,6 +220,7 @@ function addTask(){
   function darkModeFunc(){
     body.classList.toggle("darkMode");
     title.classList.toggle('darkMode');
+    aboutBtn.classList.toggle('darkMode');
   }
 
 
@@ -293,20 +295,20 @@ function addTask(){
 
 //BRINGING UP/CLOSING NOTES FOR USER TO READ
 
-  const notesBtn = document.getElementById("notesBtn");
-  const notes = document.getElementById("notes");
+  // const notesBtn = document.getElementById("notesBtn");
+  // const notes = document.getElementById("notes");
 
-  notesBtn.addEventListener("click", function() {
-    notes.classList.toggle('active');
-  })
+  // notesBtn.addEventListener("click", function() {
+  //   notes.classList.toggle('active');
+  // })
 
-  function openNotes(n) {
-    n.classList.toggle('active');
-  }
+  // function openNotes(n) {
+  //   n.classList.toggle('active');
+  // }
 
-  function closeNotes(n) {
+  // function closeNotes(n) {
 
-  }
+  // }
 
 
 
