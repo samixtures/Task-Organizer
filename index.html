@@ -13,24 +13,19 @@
 <body>
     <nav>
         <ul class="nav">
-            <li class="navBtn"> <button id="reset">RESET</button></li>
-            <li class="navBtn"> <button id="notesBtn">NOTES</button></li>
+            <li class="navBtn"> <button class="smallBtn" id="reset">RESET</button></li>
+            <!-- <li class="navBtn"> <button id="notesBtn">NOTES</button></li> -->
             <li class="navBtn"> <button id="dark/light">☀/🌙</button></li>
         </ul>
     </nav>
     <div class="aboutDiv"> 
         <button class="aboutBtn" onclick="document.getElementById('notes').classList.toggle('active')">About</button> 
-        <div id="notes" style="display:none">
-            Notes!
+        <div id="notes" class="active">
             <ul class="notesUl">
-                <li class="notesLi">Title and dark/light mode are saved upon refresh.</li>
-                <br>
-                <li class="notesLi">Edit title by changing it, then clicking off of it.</li>
-                <br>
-                <li class="notesLi">Tasks are saved upon refresh AND Xing out the page! Only way to delete them permanently is through the reset button.</li>
-                <br>
-                <li class="notesLi">Tasks become randomized after refresh: it's complicated why that is but that's how it is for now 😢.</li>
-                <br>
+                <li class="notesLi"> <strong>Basically:</strong> a To-Do list/task manager.</li>
+                <li class="notesLi">Type in the box that says <strong>TYPE TASK ⌨</strong> and hit the enter button to add a task.</li>
+                <li class="notesLi">Hit the ❌ button to delete a task and click the checkbox to check off a task.</li>
+                <li class="notesLi">The reset button at the top right resets everything back to the original page.</li>
                 <li class="notesLi">Message me if you have suggestions or problems @ bajwasami309@gmail.com, thanks for checking out the site!</li>
             </ul>
         </div>
@@ -39,7 +34,7 @@
         <textarea id = "txt" rows = "1"onchange="myFunction(this.value)">
             Task Manager 🙂!
         </textarea>
-        <div class="inpTask"><input id="userInput" type="text" placeholder="NEW TASK 🧐"> <button id="button1">Enter</button></div>
+        <div class="inpTask"><input id="userInput" type="text" placeholder="TYPE TASK ⌨"> <button id="button1" class="smallBtn">Enter</button></div>
         <!-- <button id="button2">Remove</button> <br> -->
         <div id="divertido!">
             <!-- <input type="checkbox"> <span contentEditable="true" class = "page">Example Task 1 🎨</span> <button class = "buttonXStyle">❌</button><br>
