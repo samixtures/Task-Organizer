@@ -12,6 +12,7 @@ let darkMode = document.getElementById("dark/light");
 let allButtons = document.querySelectorAll("button");
 let value, key;
 let title = document.getElementById("txt");
+let aboutBtn = document.getElementById("darkBtn");
 
 
 
@@ -219,6 +220,7 @@ function addTask(){
   function darkModeFunc(){
     body.classList.toggle("darkMode");
     title.classList.toggle('darkMode');
+    aboutBtn.classList.toggle('darkMode');
   }
 
 

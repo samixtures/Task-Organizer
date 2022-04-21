@@ -19,7 +19,7 @@
         </ul>
     </nav>
     <div class="aboutDiv"> 
-        <button class="aboutBtn" onclick="document.getElementById('notes').classList.toggle('active')">About</button> 
+        <button id="darkBtn" class="aboutBtn" onclick="document.getElementById('notes').classList.toggle('active')">About</button> 
         <div id="notes" class="active">
             <ul class="notesUl">
                 <li class="notesLi"> <strong>Basically:</strong> a To-Do list/task manager.</li>
@@ -30,6 +30,7 @@
             </ul>
         </div>
     </div>
+    <div class="buffer"></div>
     <div class="cover">
         <textarea id = "txt" rows = "1"onchange="myFunction(this.value)">
             Task Manager 🙂!
@@ -37,12 +38,6 @@
         <div class="inpTask"><input id="userInput" type="text" placeholder="TYPE TASK ⌨"> <button id="button1" class="smallBtn">Enter</button></div>
         <!-- <button id="button2">Remove</button> <br> -->
         <div id="divertido!">
-            <!-- <input type="checkbox"> <span contentEditable="true" class = "page">Example Task 1 🎨</span> <button class = "buttonXStyle">❌</button><br>
-            <input type="checkbox"> <span contentEditable="true" class = "page">Example Task 2 🐵</span> <button class = "buttonXStyle">❌</button><br>
-            <input type="checkbox"> <span contentEditable="true" class = "page">Example Task 3 🚗</span> <button class = "buttonXStyle">❌</button><br> -->
-            <!-- <footer class = "footer">Click on any text to edit<p>Tasks remain after reload, "RESET" resets everything</p></footer> -->
-            <footer class="footer">Title is editable!</footer>
-            <!-- <img src="sensei-wu-quote!.png" alt=""> -->
         </div>
     </div>
     <script src="script.js"></script>
