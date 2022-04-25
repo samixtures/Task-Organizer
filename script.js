@@ -29,7 +29,9 @@ let aboutBtn = document.getElementById("darkBtn");
 
 //FUNCTION FOR CREATING TASKS, CHECKBOX, AND X BOX
 
-
+if(!counterVal){
+  let counterVal;
+}
 
 function createTask(inp){
     let checker = document.createElement("input");
