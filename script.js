@@ -94,19 +94,6 @@ function createTask(inp){
 
     //new Local Storage Stuff
 
-    if (!localStorage.getItem('tasks')) {
-      let taskArray = [];
-      taskArray.push(input.value);
-      localStorage.setItem('tasks', JSON.stringify(taskArray));
-    }
-    else {
-      getJSON = JSON.parse(localStorage.getItem('tasks'));
-      taskArray = getJSON;
-      taskArray.push(input.value);
-      localStorage.setItem('tasks', JSON.stringify(taskArray));
-    }
-
-
     //new Local Storage Stuff
     span.classList.add("page");
     let br = document.createElement("br");
@@ -117,7 +104,20 @@ function createTask(inp){
     div.appendChild(span);
     div.appendChild(buttonX);
     div.appendChild(br);
+    let specificInput = input.value;
     input.value="";
+    buttonX.addEventListener("click", function() {
+      buttonX.remove();
+      checker.remove();
+      span.remove();
+      br.remove();
+
+      let getJSON = JSON.parse(localStorage.getItem('tasks'));
+      let taskArray = getJSON;
+      let index = taskArray.indexOf(specificInput);
+      taskArray.splice(index, 1);
+      localStorage.setItem('tasks', JSON.stringify(taskArray));
+    })
   }
 
 
@@ -146,16 +146,24 @@ function createTask(inp){
 
 
 
-
 function deleteTasks(){
+  let oldTaskArray = JSON.parse(localStorage.getItem('tasks'));
+  let newTaskArray = JSON.parse(localStorage.getItem('tasks'));
+  console.log(newTaskArray);
   for (let i = 4; i < listLength+3; i++) {
+    oldTaskArray = newTaskArray;
     allButtons[i].addEventListener("click", function(){
       newSpanner[i-4].remove();
       newChecker[i-3].remove();
       newBr[i-4].remove();
-      console.log(i);
+      // console.log(i);
       allButtons[i].remove();
-      console.log("X marks the spot!")
+      // console.log("X marks the spot!")
+      if (newTaskArray[i-4] == oldTaskArray[i-4]) {
+        newTaskArray.splice(i-4, 1);
+      }
+      console.log(newTaskArray);
+      return;
     })
   }
 }
@@ -279,7 +287,7 @@ function addTask(){
 
           createTaskAndCross();
           crossOutTasks();
-          deleteTasks();
+          // deleteTasks();
         }
 }
 
@@ -329,11 +337,37 @@ function addTask(){
 
 
   button.addEventListener("click", function() {
-    addTask();
+    if (input.value.length > 0) {
+      if (!localStorage.getItem('tasks')) {
+        let taskArray = [];
+        taskArray.push(input.value);
+        localStorage.setItem('tasks', JSON.stringify(taskArray));
+      }
+      else {
+        getJSON = JSON.parse(localStorage.getItem('tasks'));
+        taskArray = getJSON;
+        taskArray.push(input.value);
+        localStorage.setItem('tasks', JSON.stringify(taskArray));
+      }
+      addTask();
+    }
   });
 
   input.addEventListener("keypress", function(event) {
-    if (input.value.length > 0 && event.code === "Enter") addTask();
+    if (input.value.length > 0 && event.code === "Enter") {
+      if (!localStorage.getItem('tasks')) {
+        let taskArray = [];
+        taskArray.push(input.value);
+        localStorage.setItem('tasks', JSON.stringify(taskArray));
+      }
+      else {
+        getJSON = JSON.parse(localStorage.getItem('tasks'));
+        taskArray = getJSON;
+        taskArray.push(input.value);
+        localStorage.setItem('tasks', JSON.stringify(taskArray));
+      }
+      addTask();
+    }
   });
 
 
@@ -360,7 +394,7 @@ if (localStorage.getItem('tasks')) {
     newArray.push(input.value)
     addTask();
   }
-  console.log(newArray)
+  // console.log(newArray)
   taskArray = newArray;
   localStorage.setItem('tasks', JSON.stringify(newArray));
 }
