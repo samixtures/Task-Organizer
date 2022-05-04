@@ -23,9 +23,9 @@ let aboutBtn = document.getElementById("darkBtn");
 
 
 
-let taskArray = [];
+// let taskArray = [];
 
-localStorage.set('tasks', taskArray)
+// localStorage.set('tasks', taskArray)
 
 /*
   If taskArray doesn't exist:
