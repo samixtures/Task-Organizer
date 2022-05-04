@@ -23,9 +23,56 @@ let aboutBtn = document.getElementById("darkBtn");
 
 
 
+// localStorage.set('tasks', taskArray)
+
+/*
+  If taskArray doesn't exist:
+    When we create a task we should taskArray.push(createTask)
+    then localStorage.set('tasks', JSON.stringify(taskArray))
+  else:
+    let taskVar = localStroage.get(JSON.parse('tasks'))
+    taskVar.push(createTask)
+    localStorage.set('tasks', JSON.stringify(taskArray))
+
+*/
 
 
+//To put tasks as an array into the value of one key in local storage
+/*
+  if (!localStorage.getItem('tasks')) {
+    taskArray.push(input.value);
+    localStorage.setItem('tasks', JSON.stringify(taskArray));
+  }
+  else {
+    getJSON = JSON.parse(localStorage.getItem('tasks'));
+    taskArray = getJSON;
+    taskArray.push(input.value);
+    localStorage.setItem('tasks', JSON.stringify(taskArray));
+  }
 
+*/
+
+//To retain the tasks after reloading
+/*
+  getJSON = JSON.parse(localStorage.getItem('tasks'));
+  taskArray = getJSON;
+  let i = getJSON.length-1;
+  while(i >= 0) {
+    input.value = taskArray[i]
+    addTask();
+    i--
+  }
+
+
+  let i = localStorage.length-1;
+  while(i >= 0){
+    // console.log("i is " + i)
+    // console.log(localStorage.getItem(localStorage.key(i)));
+    input.value = localStorage.getItem(localStorage.key(i));
+    addTask();
+    i--;
+  }
+*/
 
 //FUNCTION FOR CREATING TASKS, CHECKBOX, AND X BOX
 
@@ -38,10 +85,16 @@ function createTask(inp){
     span.setAttribute("contentEditable", true)
     span.appendChild(document.createTextNode(inp + " "));
     //LOCAL STORAGE
-    key = input.value.length/input.value.charCodeAt(0);
-    value = input.value;
-    localStorage.setItem(key, value);
+
+    // key = input.value.length/input.value.charCodeAt(0);
+    // value = input.value;
+    // localStorage.setItem(key, value);
+
     //LOCAL STORAGE
+
+    //new Local Storage Stuff
+
+    //new Local Storage Stuff
     span.classList.add("page");
     let br = document.createElement("br");
     let buttonX = document.createElement("button");
@@ -51,7 +104,20 @@ function createTask(inp){
     div.appendChild(span);
     div.appendChild(buttonX);
     div.appendChild(br);
+    let specificInput = input.value;
     input.value="";
+    buttonX.addEventListener("click", function() {
+      buttonX.remove();
+      checker.remove();
+      span.remove();
+      br.remove();
+
+      let getJSON = JSON.parse(localStorage.getItem('tasks'));
+      let taskArray = getJSON;
+      let index = taskArray.indexOf(specificInput);
+      taskArray.splice(index, 1);
+      localStorage.setItem('tasks', JSON.stringify(taskArray));
+    })
   }
 
 
@@ -80,20 +146,39 @@ function createTask(inp){
 
 
 
-
 function deleteTasks(){
+  let oldTaskArray = JSON.parse(localStorage.getItem('tasks'));
+  let newTaskArray = JSON.parse(localStorage.getItem('tasks'));
+  console.log(newTaskArray);
   for (let i = 4; i < listLength+3; i++) {
+    oldTaskArray = newTaskArray;
     allButtons[i].addEventListener("click", function(){
       newSpanner[i-4].remove();
       newChecker[i-3].remove();
       newBr[i-4].remove();
-      console.log(i);
+      // console.log(i);
       allButtons[i].remove();
-      console.log("X marks the spot!")
+      // console.log("X marks the spot!")
+      if (newTaskArray[i-4] == oldTaskArray[i-4]) {
+        newTaskArray.splice(i-4, 1);
+      }
+      console.log(newTaskArray);
+      return;
     })
   }
 }
+// SO, when pressing a button it does do everything in the function
+// multiple times (unless it's the last task)
+// BUT since i it attempts
+// to do .remove of the span, checkbox, br, and button
+// several times so it only deletes one task since it tries
+// to delete only that one task multipl times.
 
+// So we add to the localStorage with specific indices
+// But then they get randomized so when clicking the third
+// X button for example it will delete the
+// localStorage element with key 3
+// but that element won't be the one next to the third X mark
 
 
 
@@ -202,7 +287,7 @@ function addTask(){
 
           createTaskAndCross();
           crossOutTasks();
-          deleteTasks();
+          // deleteTasks();
         }
 }
 
@@ -252,11 +337,37 @@ function addTask(){
 
 
   button.addEventListener("click", function() {
-    addTask();
+    if (input.value.length > 0) {
+      if (!localStorage.getItem('tasks')) {
+        let taskArray = [];
+        taskArray.push(input.value);
+        localStorage.setItem('tasks', JSON.stringify(taskArray));
+      }
+      else {
+        getJSON = JSON.parse(localStorage.getItem('tasks'));
+        taskArray = getJSON;
+        taskArray.push(input.value);
+        localStorage.setItem('tasks', JSON.stringify(taskArray));
+      }
+      addTask();
+    }
   });
 
   input.addEventListener("keypress", function(event) {
-    if (input.value.length > 0 && event.code === "Enter") addTask();
+    if (input.value.length > 0 && event.code === "Enter") {
+      if (!localStorage.getItem('tasks')) {
+        let taskArray = [];
+        taskArray.push(input.value);
+        localStorage.setItem('tasks', JSON.stringify(taskArray));
+      }
+      else {
+        getJSON = JSON.parse(localStorage.getItem('tasks'));
+        taskArray = getJSON;
+        taskArray.push(input.value);
+        localStorage.setItem('tasks', JSON.stringify(taskArray));
+      }
+      addTask();
+    }
   });
 
 
@@ -273,16 +384,37 @@ function addTask(){
 //RETAIN TASKS AFTER REFRESH/XING OUT TAB USING LOCAL STORAGE
 
 
-
-
-  let i = localStorage.length-1;
-  while(i >= 0){
-    // console.log("i is " + i)
-    // console.log(localStorage.getItem(localStorage.key(i)));
-    input.value = localStorage.getItem(localStorage.key(i));
+if (localStorage.getItem('tasks')) {
+  let getJSON = JSON.parse(localStorage.getItem('tasks'));
+  taskArray = getJSON
+  let i = taskArray.length;
+  let newArray = []
+  for(j = 0; j < i; j++) {
+    input.value = taskArray[j]
+    newArray.push(input.value)
     addTask();
-    i--;
   }
+  // console.log(newArray)
+  taskArray = newArray;
+  localStorage.setItem('tasks', JSON.stringify(newArray));
+}
+// localStorage.setItem('tasks', taskArray);
+
+
+// while(i >= 0) {
+//   input.value = taskArray[i]
+//   addTask();
+//   i--;
+// }
+
+  // let i = localStorage.length-1;
+  // while(i >= 0){
+  //   // console.log("i is " + i)
+  //   // console.log(localStorage.getItem(localStorage.key(i)));
+  //   input.value = localStorage.getItem(localStorage.key(i));
+  //   addTask();
+  //   i--;
+  // }
 
 
 
