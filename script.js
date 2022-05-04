@@ -29,15 +29,7 @@ let aboutBtn = document.getElementById("darkBtn");
 
 //FUNCTION FOR CREATING TASKS, CHECKBOX, AND X BOX
 
-if(localStorage.getItem("counterVal") === null){
-  let counterVal = "new";
-  localStorage.setItem("counterVal", "0")
-}
-
 function createTask(inp){
-    let counte = parseInt(localStorage.getItem("counterVal"))
-    console.log(counte)
-
     let checker = document.createElement("input");
     checker.setAttribute("type", "checkbox")
     let span = document.createElement("span");
@@ -284,14 +276,14 @@ function addTask(){
 
 
 
-  // let i = localStorage.length-1;
-  // while(i >= 0){
-  //   // console.log("i is " + i)
-  //   // console.log(localStorage.getItem(localStorage.key(i)));
-  //   input.value = localStorage.getItem(localStorage.key(i));
-  //   addTask();
-  //   i--;
-  // }
+  let i = localStorage.length-1;
+  while(i >= 0){
+    // console.log("i is " + i)
+    // console.log(localStorage.getItem(localStorage.key(i)));
+    input.value = localStorage.getItem(localStorage.key(i));
+    addTask();
+    i--;
+  }
 
 
 
