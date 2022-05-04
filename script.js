@@ -23,9 +23,58 @@ let aboutBtn = document.getElementById("darkBtn");
 
 
 
+let taskArray = [];
+
+localStorage.set('tasks', taskArray)
+
+/*
+  If taskArray doesn't exist:
+    When we create a task we should taskArray.push(createTask)
+    then localStorage.set('tasks', JSON.stringify(taskArray))
+  else:
+    let taskVar = localStroage.get(JSON.parse('tasks'))
+    taskVar.push(createTask)
+    localStorage.set('tasks', JSON.stringify(taskArray))
+
+*/
 
 
+//To put tasks as an array into the value of one key in local storage
+/*
+  if (!localStorage.getItem('tasks')) {
+    taskArray.push(input.value);
+    localStorage.setItem('tasks', JSON.stringify(taskArray));
+  }
+  else {
+    getJSON = JSON.parse(localStorage.getItem('tasks'));
+    taskArray = getJSON;
+    taskArray.push(input.value);
+    localStorage.setItem('tasks', JSON.stringify(taskArray));
+  }
 
+*/
+
+//To retain the tasks after reloading
+/*
+  getJSON = JSON.parse(localStorage.getItem('tasks'));
+  taskArray = getJSON;
+  let i = getJSON.length-1;
+  while(i >= 0) {
+    input.value = taskArray[i]
+    addTask();
+    i--
+  }
+
+
+  let i = localStorage.length-1;
+  while(i >= 0){
+    // console.log("i is " + i)
+    // console.log(localStorage.getItem(localStorage.key(i)));
+    input.value = localStorage.getItem(localStorage.key(i));
+    addTask();
+    i--;
+  }
+*/
 
 //FUNCTION FOR CREATING TASKS, CHECKBOX, AND X BOX
 
@@ -93,7 +142,18 @@ function deleteTasks(){
     })
   }
 }
+// SO, when pressing a button it does do everything in the function
+// multiple times (unless it's the last task)
+// BUT since i it attempts
+// to do .remove of the span, checkbox, br, and button
+// several times so it only deletes one task since it tries
+// to delete only that one task multipl times.
 
+// So we add to the localStorage with specific indices
+// But then they get randomized so when clicking the third
+// X button for example it will delete the
+// localStorage element with key 3
+// but that element won't be the one next to the third X mark
 
 
 
