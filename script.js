@@ -29,21 +29,27 @@ let aboutBtn = document.getElementById("darkBtn");
 
 //FUNCTION FOR CREATING TASKS, CHECKBOX, AND X BOX
 
-if(!counterVal){
-  let counterVal;
+if(localStorage.getItem("counterVal") === null){
+  let counterVal = "new";
+  localStorage.setItem("counterVal", "0")
 }
 
 function createTask(inp){
+    let counte = parseInt(localStorage.getItem("counterVal"))
+    console.log(counte)
+
     let checker = document.createElement("input");
     checker.setAttribute("type", "checkbox")
     let span = document.createElement("span");
     span.setAttribute("contentEditable", true)
     span.appendChild(document.createTextNode(inp + " "));
+
     //LOCAL STORAGE
     key = input.value.length/input.value.charCodeAt(0);
     value = input.value;
     localStorage.setItem(key, value);
     //LOCAL STORAGE
+
     span.classList.add("page");
     let br = document.createElement("br");
     let buttonX = document.createElement("button");
@@ -84,8 +90,9 @@ function createTask(inp){
 
 
 function deleteTasks(){
-  for (let i = 4; i < listLength+3; i++) {
+  for (let i = 4; i < listLength+3; i++) { //skip first 4 buttons
     allButtons[i].addEventListener("click", function(){
+      console.log("list length is " + listLength)
       newSpanner[i-4].remove();
       newChecker[i-3].remove();
       newBr[i-4].remove();
@@ -277,14 +284,14 @@ function addTask(){
 
 
 
-  let i = localStorage.length-1;
-  while(i >= 0){
-    // console.log("i is " + i)
-    // console.log(localStorage.getItem(localStorage.key(i)));
-    input.value = localStorage.getItem(localStorage.key(i));
-    addTask();
-    i--;
-  }
+  // let i = localStorage.length-1;
+  // while(i >= 0){
+  //   // console.log("i is " + i)
+  //   // console.log(localStorage.getItem(localStorage.key(i)));
+  //   input.value = localStorage.getItem(localStorage.key(i));
+  //   addTask();
+  //   i--;
+  // }
 
 
 
