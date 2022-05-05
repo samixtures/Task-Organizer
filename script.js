@@ -311,11 +311,11 @@ function addTask(){
 
   darkMode.addEventListener("click", function() {
     darkModeFunc();
-    if(!sessionStorage.getItem('bgcol')) sessionStorage.setItem('bgcol', 'yes');
-    else sessionStorage.removeItem('bgcol');
+    if(!localStorage.getItem('bgcol')) localStorage.setItem('bgcol', 'yes');
+    else localStorage.removeItem('bgcol');
   })
 
-  if(!sessionStorage.getItem('bgcol')) {
+  if(!localStorage.getItem('bgcol')) {
     darkModeFunc();
   }
 
@@ -449,17 +449,17 @@ if (localStorage.getItem('tasks')) {
 
 
 
-//RETAIN TITLE WITH SESSION STORAGE
+//RETAIN TITLE WITH local STORAGE
 
 
 
 
-  if(!sessionStorage.getItem('title')) sessionStorage.setItem('title', 'Task Manager! 🙂');
-  title.value = sessionStorage.getItem('title');
+  if(!localStorage.getItem('title')) localStorage.setItem('title', 'Task Manager! 🙂');
+  title.value = localStorage.getItem('title');
   console.log(title.textContent);
   function myFunction(val) {
-  sessionStorage.setItem('title', val);
-  title.innerHTML = sessionStorage.getItem('title');
+  localStorage.setItem('title', val);
+  title.innerHTML = localStorage.getItem('title');
   }
 
 
@@ -484,7 +484,7 @@ if (localStorage.getItem('tasks')) {
     }
   
     localStorage.clear();
-    sessionStorage.setItem('title', 'Task Manager 🙂!');
+    localStorage.setItem('title', 'Task Manager 🙂!');
     title.value = 'Task Manager 🙂!';
     // allButtons[3].remove();
   })
